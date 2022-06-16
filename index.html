@@ -45,13 +45,20 @@
                 console.log("Tie - You both choose paper");
             }
             else {
-                console.log("Choose a valid weapon!");
+                console.log("Please choose a valid weapon");
             }
         }
 
-        let playerSelection = prompt("Choose your weapon");
+        let playerSelection = () => {
+            let option = prompt("Choose your weapon");
+            capFirstLetter = option.charAt(0).toUpperCase() + option.slice(1);
+            console.log("You chose " + capFirstLetter);
+            console.log("Computer chose " + computerSelection);
+            return capFirstLetter;
+        }
+
         const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerSelection(), computerSelection));
 
     </script>
 </body>
