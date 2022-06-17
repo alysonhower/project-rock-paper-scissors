@@ -10,56 +10,71 @@
 
 <body>
     <script>
-        function computerPlay() {
-            const possibleSelections = ["Rock", "Paper", "Scissors"];
-            let selection = possibleSelections[Math.floor(Math.random() * possibleSelections.length)];
-            return selection
+
+        function game() {
+
+            let computerScore = 0
+            let playerScore = 0
+
+            for (let i = 1; i < 6; i++) {
+
+                function computerPlay() {
+                    const possibleSelections = ["Rock", "Paper", "Scissors"];
+                    let selection = possibleSelections[Math.floor(Math.random() * possibleSelections.length)];
+                    return selection
+                }
+
+                const computerSelection = computerPlay();
+
+                let playerSelection = () => {
+                    let option = prompt("Choose your weapon:");
+                    capFirstLetter = option.charAt(0).toUpperCase() + option.slice(1);
+                    return capFirstLetter;
+                }
+
+                function playRound(playerSelection, computerSelection) {
+                    if (playerSelection === "Rock" && computerSelection === "Rock") {
+                        console.log("Round " + i + "\n", "You chose rock.\n", "Computer chose rock.\n", "Tie! You both choose rock.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                        playerScore++
+                        console.log("Round " + i + "\n", "You chose rock.\n", "Computer chose scissors.\n", "You win! Rock beats scissors.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+                        computerScore++
+                        console.log("Round " + i + "\n", "You chose rock.\n", "Computer chose paper.\n", "You loose! Paper beats rock.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+                        computerScore++
+                        console.log("Round " + i + "\n", "You chose rock.\n", "Computer chose rock.\n", "You loose! Rock beats scissors.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+                        console.log("Round " + i + "\n", "You chose scissors.\n", "Computer chose scissors.\n", "Tie! You both choose scissors.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                        playerScore++
+                        console.log("Round " + i + "\n", "You chose scissors.\n", "Computer chose paper.\n", "You win! Scissors beats paper.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                        playerScore++
+                        console.log("Round " + i + "\n", "You chose paper.\n", "Computer chose rock.\n", "You win! Paper beats rock.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+                        computerScore++
+                        console.log("Round " + i + "\n", "You chose paper.\n", "Computer chose scissors.\n", "You loose! Scissors beats paper.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else if (playerSelection === "Paper" && computerSelection === "Paper") {
+                        console.log("Round " + i + "\n", "You chose paper.\n", "Computer chose paper.\n", "Tie - You both choose paper.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                    else {
+                        console.log("Round " + i + "\n", "Please choose a valid weapon.\n", "Player score: " + playerScore + "\n", "Computer score: " + computerScore);
+                    }
+                }
+
+                playRound(playerSelection(), computerSelection);
+            }
         }
-
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === "Rock" && computerSelection === "Rock") {
-                console.log("Tie - You both choose rock");
-            }
-            else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-                console.log("You Win - Rock wins scissors");
-            }
-            else if (playerSelection === "Rock" && computerSelection === "Paper") {
-                console.log("You Loose - Paper wins rock");
-            }
-            else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-                console.log("You Loose - Rock wins scissors");
-            }
-            else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-                console.log("Tie - You both choose scissors");
-            }
-            else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-                console.log("You Win - Scissors wins paper");
-            }
-            else if (playerSelection === "Paper" && computerSelection === "Rock") {
-                console.log("You Win - Paper wins rock");
-            }
-            else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-                console.log("You Loose - Scissors wins rock");
-            }
-            else if (playerSelection === "Paper" && computerSelection === "Paper") {
-                console.log("Tie - You both choose paper");
-            }
-            else {
-                console.log("Please choose a valid weapon");
-            }
-        }
-
-        let playerSelection = () => {
-            let option = prompt("Choose your weapon");
-            capFirstLetter = option.charAt(0).toUpperCase() + option.slice(1);
-            console.log("You chose " + capFirstLetter);
-            console.log("Computer chose " + computerSelection);
-            return capFirstLetter;
-        }
-
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection(), computerSelection));
-
+        game()
     </script>
 </body>
 
