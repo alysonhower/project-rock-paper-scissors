@@ -11,3 +11,12 @@ body {
   flex-direction: column;
 }
 
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
