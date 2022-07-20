@@ -1,7 +1,11 @@
 * {
   box-sizing: border-box;
-  padding: 0px;
   margin: 0px;
+  padding: 0px;
+}
+
+.hidden {
+  display: none;
 }
 
 body {
@@ -11,6 +15,10 @@ body {
   flex-direction: column;
 }
 
+header {
+  margin: 100px;
+} 
+
 .options {
   display: flex;
   flex-direction: row;
@@ -19,4 +27,10 @@ body {
 .buttons {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+button {
+  height: 30px;
+  width: 100px;
 }
